@@ -12,7 +12,33 @@ An advanced computer vision architecture designed to extract topological boundar
 
 ---
 
-## 🏗️ System Architecture & Deliverables
+## 🏗️ Computer Vision Architecture Flow
+
+```mermaid
+graph TD
+    A["Parametric Bezier-Style Stroke Drawing"] --> B["Gaussian Point-Spread-Function (PSF) Spreads"]
+    B --> C["Elastic Jitter & Scanner Noise Augmentation"]
+    C -->|Normalized Tensors| D["Input Data Array (28x28 Grayscale)"]
+    D --> E["Layer 1: Conv2d Filters (3x3 Kernel)"]
+    E --> F["Batch Normalization Scaling"]
+    F --> G["MaxPool2d Downsampling (14x14 Map)"]
+    G --> H["Layer 2: Conv2d Filters (3x3 Kernel)"]
+    H --> I["Batch Normalization Scaling"]
+    I --> J["MaxPool2d Downsampling (7x7 Feature Map)"]
+    J --> K["Flatten Embedding Tensors"]
+    K --> L["Fully Connected Dense Layers"]
+    L --> M["40% Dropout Regularization"]
+    M --> N["Output Classifier Logits (8 Classes)"]
+    
+    subgraph Roadmap Readiness
+    J -.->|Feature Slices| O["Bidirectional LSTM Sequence Blocks"]
+    O -.-> P["Connectionist Temporal Classification (CTC Loss)"]
+    end
+```
+
+---
+
+## 📂 System Assets & Hierarchy
 
 ```text
 Handwritten_Character_Recognition/
